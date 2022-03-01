@@ -38,3 +38,5 @@ class Team(Teamlike):
 
     def __hash__(self)->int:
         return self.id
+
+    

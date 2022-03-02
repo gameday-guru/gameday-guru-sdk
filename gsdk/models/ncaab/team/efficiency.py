@@ -1,113 +1,15 @@
-import abc
-from typing import List, Tuple
+from . import efficiencylike
+from typing import Tuple
 
-class EfficiencyTeamlike(metaclass=abc.ABCMeta):
-    """Abstract class. Represents what is needed by Efficiency from a team.
-    """
-    pts : float
-    pts_against : float
-    possessions : float
-    kadjoeff : float
-    kadjdeff : float
-    badjoeff : float
-    badjdeff : float
-    radjdeff : float
-    radjoeff : float
-    name : str
-    id : int
 
-    @abc.abstractmethod
-    def next_efficiency_training_set(self)->List['EfficiencyTeamlike']:
-        """Gets the next available efficiency training set
-        which is a list of opponents.
-        """
-        pass
 
-class EfficiencyLeaguelike(abc.ABC):
-    """Abstract class. Represents what is needed by Efficiency from a league.
-    """
-    avg_oeff : float
-    avg_deff : float
-    ppp : float
-
-class EfficiencyControllerlike(metaclass=abc.ABCMeta):
-    """Abstract class defining the controller used for serializing the efficiency model.
-    """
-    @abc.abstractmethod
-    def serialize(self, efficiency : 'Efficiencylike'):
-        pass
-
-class Efficiencylike(metaclass=abc.ABCMeta):
-    team : EfficiencyTeamlike
-    league : EfficiencyLeaguelike
-    controller : EfficiencyControllerlike
-    recency : float
-    mu : float 
-
-    @classmethod
-    @abc.abstractmethod
-    def eff(cls, pts : float, possesions : float)->float:
-        pass
-
-    @classmethod
-    @abc.abstractmethod
-    def adjem(cls, oeff : float, navg: float)->float:
-        pass
-
-    @classmethod
-    @abc.abstractmethod
-    def kadjeff(cls, eff : float, navg : float, op_adj : float)->float:
-        pass
-
-    @abc.abstractmethod
-    def __init__(self, team : EfficiencyTeamlike, league : EfficiencyLeaguelike, controller : EfficiencyControllerlike):
-        pass
-
-    @abc.abstractmethod
-    def get_oeff(self)->float:
-        pass
-
-    @abc.abstractmethod
-    def get_deff(self)->float:
-        pass
-
-    @abc.abstractmethod
-    def next_adjusted_koeff(self, opponent : EfficiencyTeamlike)->float:
-        pass
-
-    @abc.abstractmethod
-    def next_adjusted_kdeff(self, opponent : EfficiencyTeamlike)->float:
-        pass
-
-    @classmethod
-    @abc.abstractmethod
-    def badjeff(cls, pppg : float, oe : float, de : float, navg : float)->Tuple[float, float]:
-        pass
-
-    @classmethod
-    @abc.abstractmethod
-    def radjeff(cls, pppg : float, oe : float, de : float, navg : float, recency : float =.2)->Tuple[float, float]:
-        pass
-    
-    @abc.abstractmethod
-    def biupdate_kadjeff(self, opponent : EfficiencyTeamlike)->None:
-        pass
-
-    @abc.abstractmethod
-    def biupdate_badjeff(self, opponent : EfficiencyTeamlike, pppf : float, pppa : float)->None:
-        pass
-
-    @abc.abstractmethod
-    def serialize(self)->None:
-        pass
-
-class Efficiency(Efficiencylike):
+class Efficiency(efficiencylike.Efficiencylike):
     """Class for managing team efficiency properties. Should usually be used to compose a 
     team class.
     """
-
-    team : EfficiencyTeamlike
-    league : EfficiencyLeaguelike
+    possessions : float
+    team : efficiencylike.EfficiencyTeamlike
+    league : efficiencylike.EfficiencyDivisionlike
     recency : float
     mu : float = .01
 
@@ -160,7 +62,7 @@ class Efficiency(Efficiencylike):
         return (eff * navg)/op_adj
 
 
-    def __init__(self, team : EfficiencyTeamlike, league : EfficiencyLeaguelike, controller : EfficiencyControllerlike):
+    def __init__(self, team : efficiencylike.EfficiencyTeamlike, league : efficiencylike.EfficiencyDivisionlike, controller : efficiencylike.EfficiencyControllerlike):
         """Takes pts and possesions to initialize recency.
 
         Args:
@@ -171,6 +73,11 @@ class Efficiency(Efficiencylike):
         self.team = team
         self.league = league
         self.controller = controller
+    
+    def get(self)->None:
+        """Gets self using the controller.
+        """
+        self.controller.get(self)
 
     def get_oeff(self)->float:
         """Gets the team's offensive efficiency.
@@ -178,7 +85,7 @@ class Efficiency(Efficiencylike):
         Returns:
             float: the team's offensive efficiency.
         """
-        return Efficiency.eff(self.team.pts, self.team.possessions)
+        return Efficiency.eff(self.team.pts, self.possessions)
 
     def get_deff(self)->float:
         """Gets the team's deffensive efficiency.
@@ -186,10 +93,10 @@ class Efficiency(Efficiencylike):
         Returns:
             float: the team's defensive efficiency.
         """
-        return Efficiency.eff(self.team.pts_against, self.team.possessions)
+        return Efficiency.eff(self.team.pts_against, self.possessions)
 
 
-    def next_adjusted_koeff(self, opponent : EfficiencyTeamlike)->float:
+    def next_adjusted_koeff(self, opponent : efficiencylike.Efficiencylike)->float:
         """Gets the next adjusted offensive efficiency value.
 
         Args:
@@ -200,7 +107,7 @@ class Efficiency(Efficiencylike):
         """
         return Efficiency.kadjeff(self.get_oeff(), self.league.avg_oeff, opponent.radjdeff)
 
-    def next_adjusted_kdeff(self, opponent : EfficiencyTeamlike)->float:
+    def next_adjusted_kdeff(self, opponent : efficiencylike.Efficiencylike)->float:
         """Gets the next adjusted defensive efficiency value.
 
         Args:
@@ -256,7 +163,7 @@ class Efficiency(Efficiencylike):
             mde = lde - de
         return (oe, de)
 
-    def biupdate_kadjeff(self, opponent : EfficiencyTeamlike)->None:
+    def biupdate_kadjeff(self, opponent : efficiencylike.Efficiencylike)->None:
         """Updates kadjeff for team and its opponent.
         Args:
             opponent (float): 
@@ -266,16 +173,16 @@ class Efficiency(Efficiencylike):
         next_kadjoeff = self.next_adjusted_koeff(opponent)
         next_kadjdeff = self.next_adjusted_kdeff(opponent)
 
-        o_next_kadjoeff = self.next_adjusted_koeff(self.team)
-        o_next_kadjdeff = self.next_adjusted_kdeff(self.team)
+        o_next_kadjoeff = self.next_adjusted_koeff(self)
+        o_next_kadjdeff = self.next_adjusted_kdeff(self)
 
-        self.team.kadjoeff = next_kadjoeff
-        self.team.kadjdeff = next_kadjdeff
+        self.kadjoeff = next_kadjoeff
+        self.kadjdeff = next_kadjdeff
 
         opponent.kadjoeff = o_next_kadjoeff
         opponent.kadjdeff = o_next_kadjdeff
 
-    def biupdate_badjeff(self, opponent : EfficiencyTeamlike, pppf : float, pppa : float)->None:
+    def biupdate_badjeff(self, opponent : efficiencylike.Efficiencylike, pppf : float, pppa : float)->None:
         """Updates the badjeff value of the 
 
         Args:
@@ -285,17 +192,17 @@ class Efficiency(Efficiencylike):
         """
 
         next_badjoeff, o_next_badjdeff = \
-            Efficiency.badjeff(pppf, self.team.badjoeff, opponent.badjdeff, self.league.ppp)
+            Efficiency.badjeff(pppf, self.badjoeff, opponent.badjdeff, self.league.ppp)
         next_badjdeff, o_next_badjoeff = \
-            Efficiency.badjeff(pppa, opponent.badjoeff, self.team.badjdeff, self.league.ppp)
+            Efficiency.badjeff(pppa, opponent.badjoeff, self.badjdeff, self.league.ppp)
         
-        self.team.badjoeff = next_badjoeff
-        self.team.badjdeff = next_badjdeff
+        self.badjoeff = next_badjoeff
+        self.badjdeff = next_badjdeff
 
         opponent.badjoeff = o_next_badjoeff
         opponent.badjdeff = o_next_badjdeff
 
-    def biupdate_radjeff(self, opponent : EfficiencyTeamlike, pppf : float, pppa : float, recency : float = .2)->None:
+    def biupdate_radjeff(self, opponent : efficiencylike.Efficiencylike, pppf : float, pppa : float, recency : float = .2)->None:
         """_summary_
 
         Args:
@@ -305,12 +212,12 @@ class Efficiency(Efficiencylike):
         """
 
         next_radjoeff, o_next_radjdeff = \
-            Efficiency.radjeff(pppf, self.team.badjoeff, opponent.badjdeff, self.league.ppp, recency)
+            Efficiency.radjeff(pppf, self.badjoeff, opponent.badjdeff, self.league.ppp, recency)
         next_radjdeff, o_next_radjoeff = \
-            Efficiency.radjeff(pppa, opponent.badjoeff, self.team.badjdeff, self.league.ppp, recency)
+            Efficiency.radjeff(pppa, opponent.badjoeff, self.badjdeff, self.league.ppp, recency)
         
-        self.team.radjoeff = next_radjoeff
-        self.team.radjdeff = next_radjdeff
+        self.radjoeff = next_radjoeff
+        self.radjdeff = next_radjdeff
 
         opponent.radjoeff = o_next_radjoeff
         opponent.radjdeff = o_next_radjdeff
@@ -320,7 +227,7 @@ class Efficiency(Efficiencylike):
         """
         self.controller.serialize(self)
 
-    def biupdate_and_serialize(self, opponent : EfficiencyTeamlike, pppf : float, pppa : float, recency : float = .2)->None:
+    def biupdate_and_serialize(self, opponent : efficiencylike.Efficiencylike, pppf : float, pppa : float, recency : float = .2)->None:
         """Performs a biupdate then serializes this efficiency and the opponent's.
 
         Args:
@@ -332,8 +239,6 @@ class Efficiency(Efficiencylike):
         self.biupdate_kadjeff(opponent)
         self.biupdate_badjeff(opponent, pppf, pppa)
         self.biupdate_radjeff(opponent, pppf, pppa, recency)
-
-        
-
+        self.serialize()
 
     

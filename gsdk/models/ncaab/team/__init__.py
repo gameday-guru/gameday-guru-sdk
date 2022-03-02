@@ -1,2 +1,4 @@
-from efficiency import *
-from team import *
+from . import efficiency
+from . import efficiencylike
+from . import team
+from . import teamlike

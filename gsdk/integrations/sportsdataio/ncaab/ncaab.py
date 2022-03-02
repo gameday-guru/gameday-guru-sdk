@@ -1,8 +1,13 @@
-import requests
-"https://api.sportsdata.io/v3/cbb/scores/json/GamesByDate/2018-FEB-27?key=7f63ca312eab45d19be1574b93cc369d"
+from . import ncaablike
+from . import game
+from .. import sportsdataio_meta
 
 
-class NCAAB:
-    pass
 
-print(requests.get("https://api.sportsdata.io/v3/cbb/scores/json/GamesByDate/2018-FEB-27?key=7f63ca312eab45d19be1574b93cc369d").json())
+class NCAAB(ncaablike.NCAABlike):
+
+    games : game.gameslike.Gameslike
+    
+    def __init__(self, meta : sportsdataio_meta.SportsDataIOMetalike) -> None:
+        self.games = game.games.Games( meta)
+

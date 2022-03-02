@@ -1,10 +1,10 @@
-import abc
+
 from typing import Any, List, TypeVar, Callable, cast
 from datetime import datetime
 import dateutil.parser
-from gsdk.utils.integrations.sportsdataio.sportsdataio_meta import SportsDataIOMetalike
-import sportsdataio_meta
+from ...sportsdataio_meta import SportsDataIOMetalike
 import requests
+from .by_date_like import Periodlike, GameByDatelike, GamesByDatelike
 
 
 T = TypeVar("T")
@@ -41,7 +41,7 @@ def from_bool(x: Any) -> bool:
 
 def from_list(f: Callable[[Any], T], x: Any) -> List[T]:
     assert isinstance(x, list)
-    return [f(y) for y in x]
+    return [f(y) for y in cast(List[Any], x)]
 
 
 def to_float(x: Any) -> float:
@@ -52,32 +52,6 @@ def to_float(x: Any) -> float:
 def to_class(c: Any, x: Any) -> dict[Any, Any]:
     assert isinstance(x, c)
     return cast(Any, x).to_dict()
-
-class Periodlike(metaclass=abc.ABCMeta):
-    period_id: int
-    game_id: int
-    number: int
-    name: int
-    type: str
-    away_score: int
-    home_score: int
-
-    @classmethod
-    @abc.abstractmethod
-    def from_dict(cls, obj: object) -> 'Periodlike':
-        """Creates a Periodlike object from a dictionary.
-
-        Args:
-            obj (object): is an object which is can be interpretted as a Periodlike
-
-        Returns:
-            Periodlike: a Periodlike object.
-        """
-        pass
-    
-    @abc.abstractmethod
-    def to_dict(self) -> dict[str, Any]:
-        pass
 
 class Period(Periodlike):
 
@@ -113,70 +87,10 @@ class Period(Periodlike):
         result["HomeScore"] = from_int(self.home_score)
         return result
 
-class GameByDatelike:
-    game_id: int
-    season: int
-    season_type: int
-    status: str
-    day: datetime
-    date_time: datetime
-    away_team: str
-    home_team: str
-    away_team_id: int
-    home_team_id: int
-    away_team_score: int
-    home_team_score: int
-    updated: datetime
-    period: str
-    time_remaining_minutes: None
-    time_remaining_seconds: None
-    point_spread: float
-    over_under: float
-    away_team_money_line: int
-    home_team_money_line: int
-    global_game_id: int
-    global_away_team_id: int
-    global_home_team_id: int
-    tournament_id: None
-    bracket: None
-    round: None
-    away_team_seed: None
-    home_team_seed: None
-    away_team_previous_game_id: None
-    home_team_previous_game_id: None
-    away_team_previous_global_game_id: None
-    home_team_previous_global_game_id: None
-    tournament_display_order: None
-    tournament_display_order_for_home_team: str
-    is_closed: bool
-    game_end_date_time: datetime
-    home_rotation_number: None
-    away_rotation_number: None
-    top_team_previous_game_id: None
-    bottom_team_previous_game_id: None
-    channel: None
-    neutral_venue: None
-    away_point_spread_payout: None
-    home_point_spread_payout: None
-    over_payout: None
-    under_payout: None
-    date_time_utc: datetime
-    stadium: None
-    periods: List[Period]
-
-    @classmethod
-    @abc.abstractmethod
-    def from_dict(cls, obj: Any) -> 'GameByDatelike':
-        pass
-
-    @abc.abstractmethod
-    def to_dict(self) -> dict[str, Any]:
-        pass
-
 
 class GameByDate(GameByDatelike):
 
-    def __init__(self, game_id: int, season: int, season_type: int, status: str, day: datetime, date_time: datetime, away_team: str, home_team: str, away_team_id: int, home_team_id: int, away_team_score: int, home_team_score: int, updated: datetime, period: str, time_remaining_minutes: None, time_remaining_seconds: None, point_spread: float, over_under: float, away_team_money_line: int, home_team_money_line: int, global_game_id: int, global_away_team_id: int, global_home_team_id: int, tournament_id: None, bracket: None, round: None, away_team_seed: None, home_team_seed: None, away_team_previous_game_id: None, home_team_previous_game_id: None, away_team_previous_global_game_id: None, home_team_previous_global_game_id: None, tournament_display_order: None, tournament_display_order_for_home_team: str, is_closed: bool, game_end_date_time: datetime, home_rotation_number: None, away_rotation_number: None, top_team_previous_game_id: None, bottom_team_previous_game_id: None, channel: None, neutral_venue: None, away_point_spread_payout: None, home_point_spread_payout: None, over_payout: None, under_payout: None, date_time_utc: datetime, stadium: None, periods: List[Period]) -> None:
+    def __init__(self, game_id: int, season: int, season_type: int, status: str, day: datetime, date_time: datetime, away_team: str, home_team: str, away_team_id: int, home_team_id: int, away_team_score: int, home_team_score: int, updated: datetime, period: str, time_remaining_minutes: None, time_remaining_seconds: None, point_spread: float, over_under: float, away_team_money_line: int, home_team_money_line: int, global_game_id: int, global_away_team_id: int, global_home_team_id: int, tournament_id: None, bracket: None, round: None, away_team_seed: None, home_team_seed: None, away_team_previous_game_id: None, home_team_previous_game_id: None, away_team_previous_global_game_id: None, home_team_previous_global_game_id: None, tournament_display_order: None, tournament_display_order_for_home_team: str, is_closed: bool, game_end_date_time: datetime, home_rotation_number: None, away_rotation_number: None, top_team_previous_game_id: None, bottom_team_previous_game_id: None, channel: None, neutral_venue: None, away_point_spread_payout: None, home_point_spread_payout: None, over_payout: None, under_payout: None, date_time_utc: datetime, stadium: None, periods: List[Periodlike]) -> None:
         self.game_id = game_id
         self.season = season
         self.season_type = season_type
@@ -279,7 +193,7 @@ class GameByDate(GameByDatelike):
         date_time_utc = from_datetime(obj["DateTimeUTC"])
         stadium = from_none(obj["Stadium"])
         periods = from_list(Period.from_dict, obj["Periods"])
-        return GameByDate(game_id, season, season_type, status, day, date_time, away_team, home_team, away_team_id, home_team_id, away_team_score, home_team_score, updated, period, time_remaining_minutes, time_remaining_seconds, point_spread, over_under, away_team_money_line, home_team_money_line, global_game_id, global_away_team_id, global_home_team_id, tournament_id, bracket, round, away_team_seed, home_team_seed, away_team_previous_game_id, home_team_previous_game_id, away_team_previous_global_game_id, home_team_previous_global_game_id, tournament_display_order, tournament_display_order_for_home_team, is_closed, game_end_date_time, home_rotation_number, away_rotation_number, top_team_previous_game_id, bottom_team_previous_game_id, channel, neutral_venue, away_point_spread_payout, home_point_spread_payout, over_payout, under_payout, date_time_utc, stadium, periods)
+        return GameByDate(game_id, season, season_type, status, day, date_time, away_team, home_team, away_team_id, home_team_id, away_team_score, home_team_score, updated, period, time_remaining_minutes, time_remaining_seconds, point_spread, over_under, away_team_money_line, home_team_money_line, global_game_id, global_away_team_id, global_home_team_id, tournament_id, bracket, round, away_team_seed, home_team_seed, away_team_previous_game_id, home_team_previous_game_id, away_team_previous_global_game_id, home_team_previous_global_game_id, tournament_display_order, tournament_display_order_for_home_team, is_closed, game_end_date_time, home_rotation_number, away_rotation_number, top_team_previous_game_id, bottom_team_previous_game_id, channel, neutral_venue, away_point_spread_payout, home_point_spread_payout, over_payout, under_payout, date_time_utc, stadium, cast(List[Periodlike], periods))
 
     def to_dict(self) -> dict[str, Any]:
         result: dict[str, Any] = {}
@@ -335,14 +249,6 @@ class GameByDate(GameByDatelike):
         return result
 
 
-class GamesByDatelike(metaclass=abc.ABCMeta):
-    """Driver class for getting games by date.
-    """
-    meta : sportsdataio_meta.SportsDataIOMetalike
-
-    @abc.abstractmethod
-    def get_games(cls, date : datetime) -> List['GameByDatelike']:
-        pass
 
 class GamesByDate(GamesByDatelike):
 

@@ -1,42 +1,32 @@
-import efficiency
-import abc
+from . import teamlike
+from . import efficiencylike
+from typing import Type
+from . import efficiency
 
-class TeamDivisonlike(metaclass=abc.ABCMeta):
-    pass
-
-class TeamControllerlike(metaclass=abc.ABCMeta): 
-    """Abstract class for team controller.
-    We just need get and set methods for the team.
-    """
-    
-    @abc.abstractmethod
-    def get_team(self, id : int):
-        pass
-
-    @abc.abstractmethod
-    def set_team(self, id : int, team : 'Teamlike')->None:
-        pass
-
-class Teamlike(
-    # injection targets
-    efficiency.EfficiencyTeamlike, 
-    metaclass=abc.ABCMeta
-):
-    """Team asbract class with injection targets.
-    """
-    pass
-
-class Team(Teamlike):
+class Team(teamlike.Teamlike):
     """An NCAAB team.
     """
 
-    controller : TeamControllerlike
-    efficiency : efficiency.Efficiency
+    pts : float
+    pts_against : float
+    name : str
+    id : int
+    controller : teamlike.TeamControllerlike
+    eff : efficiencylike.Efficiencylike
 
-    def __init__(self):
-        pass
+    def __init__(
+        self, 
+        division : teamlike.TeamDivisonlike, 
+        controller : teamlike.TeamControllerlike,
+        efficiency_dependency : Type[efficiencylike.Efficiencylike] = efficiency.Efficiency
+    ):
+        """Initializes a team using a division and a controller.
+
+        Args:
+            division (TeamDivisonlike): is the division of which the team is a member.
+            controller (TeamControllerlike):  controller is the controller for the team's operations.
+        """
+        self.eff = efficiency_dependency(self, division.efficiency, controller.efficiency_controller)
 
     def __hash__(self)->int:
         return self.id
-
-    

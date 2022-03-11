@@ -1,4 +1,4 @@
-import abc
+from typing import Protocol
 from dotenv import dotenv_values
 
 class SportsDataIOMetalike(Protocol):
@@ -14,6 +14,9 @@ class SportsDataIOSingleton(SportsDataIOMetalike):
 
 
 class SportsDataIOmeta(SportsDataIOMetalike):
+
+    key : str
+    domain : str
 
     def __init__(self, env_key : str, env_domain : str):
         key = dotenv_values()[env_key]

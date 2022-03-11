@@ -8,8 +8,8 @@ class Efficiency(efficiencylike.Efficiencylike):
     team class.
     """
     possessions : float
-    team : efficiencylike.EfficiencyTeamlike
-    league : efficiencylike.EfficiencyDivisionlike
+    team : efficiencylike.Teamalog
+    league : efficiencylike.Divisionalog
     recency : float
     mu : float = .01
 
@@ -62,7 +62,7 @@ class Efficiency(efficiencylike.Efficiencylike):
         return (eff * navg)/op_adj
 
 
-    def __init__(self, team : efficiencylike.EfficiencyTeamlike, league : efficiencylike.EfficiencyDivisionlike, controller : efficiencylike.EfficiencyControllerlike):
+    def __init__(self, team : efficiencylike.Teamalog, league : efficiencylike.Divisionalog, controller : efficiencylike.Controlleralog):
         """Takes pts and possesions to initialize recency.
 
         Args:

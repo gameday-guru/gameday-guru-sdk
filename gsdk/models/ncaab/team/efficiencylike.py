@@ -1,7 +1,7 @@
 import abc
 from typing import Tuple, Protocol
 
-class EfficiencyTeamlike(Protocol):
+class Teamalog(Protocol):
     """Abstract class. Represents what is needed by Efficiency from a team.
     """
     pts : float
@@ -9,26 +9,26 @@ class EfficiencyTeamlike(Protocol):
     name : str
     id : int
 
-class EfficiencyDivisionlike(Protocol):
+class Divisionalog(Protocol):
     """Abstract class. Represents what is needed by Efficiency from a league.
     """
     avg_oeff : float
     avg_deff : float
     ppp : float
 
-class EfficiencyControllerlike(Protocol):
+class Controlleralog(Protocol):
     """Abstract class defining the controller used for serializing the efficiency model.
     """
     @abc.abstractmethod
-    def get(self, efficiency : 'Efficiencylike'):
+    def get(self, efficiency : 'Efficiencylike')->None:
         pass
 
     @abc.abstractmethod
-    def serialize(self, efficiency : 'Efficiencylike'):
+    def serialize(self, efficiency : 'Efficiencylike')->None:
         pass
 
 class Efficiencylike(Protocol):
-    team : EfficiencyTeamlike
+    team : Teamalog
     possessions : float
     kadjoeff : float
     kadjdeff : float
@@ -37,8 +37,8 @@ class Efficiencylike(Protocol):
     radjdeff : float
     radjoeff : float
 
-    league : EfficiencyDivisionlike
-    controller : EfficiencyControllerlike
+    league : Divisionalog
+    controller : Controlleralog
     recency : float
     mu : float 
 
@@ -58,7 +58,7 @@ class Efficiencylike(Protocol):
         pass
 
     @abc.abstractmethod
-    def __init__(self, team : EfficiencyTeamlike, league : EfficiencyDivisionlike, controller : EfficiencyControllerlike):
+    def __init__(self, team : Teamalog, league : Divisionalog, controller : Controlleralog):
         pass
 
     @abc.abstractmethod

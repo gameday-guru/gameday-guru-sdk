@@ -1,29 +1,29 @@
 import abc
 import datetime
-from typing import List, Protocol
+from typing import Protocol, Sequence
 
-class EfficiencyTeamlike(Protocol):
+class Teamalog(Protocol):
     @abc.abstractmethod
-    def biupdate_and_serialize(self, opponent : 'EfficiencyTeamlike', pppf : float, pppa : float, recency : float = .2)->None:
+    def biupdate_and_serialize(self, opponent : 'Teamalog', pppf : float, pppa : float, recency : float = .2)->None:
         pass
 
-class EfficiencyGamelike(Protocol):
-    home : EfficiencyTeamlike
+class Gamealog(Protocol):
+    home : Teamalog
     home_pts : float
-    away : EfficiencyTeamlike
+    away : Teamalog
     away_pts : float
 
-class EfficiencyDivisionlike(Protocol):
+class Divisionalog(Protocol):
     @abc.abstractmethod
-    def get_games_on_date(self, date : datetime.datetime)->List[EfficiencyGamelike]:
+    def get_games_on_date(self, date : datetime.datetime)->Sequence[Gamealog]:
         pass
 
 class Efficiencylike(Protocol):
 
-    division : EfficiencyDivisionlike
+    division : Divisionalog
     
     @abc.abstractmethod
-    def __init__(self, division : EfficiencyDivisionlike):
+    def __init__(self, division : Divisionalog):
         pass
 
     @abc.abstractmethod

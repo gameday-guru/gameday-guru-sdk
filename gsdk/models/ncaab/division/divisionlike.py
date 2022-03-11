@@ -1,36 +1,36 @@
 import abc
 import datetime
-from typing import List, Protocol
+from typing import Protocol, Sequence
 from . import efficiencylike
 
-class DivisionTeamlike(
+class Teamalog(
     # dependency targets
-    efficiencylike.EfficiencyTeamlike,
+    efficiencylike.Teamalog,
     Protocol
 ):
     pass
 
-class DivisionGamelike(
+class Gamealog(
     # dependency targets
-    efficiencylike.EfficiencyTeamlike,
+    efficiencylike.Gamealog,
     Protocol
 ):
     pass
 
-class DivisionControllerlike(Protocol):
+class Controlleralog(Protocol):
     @abc.abstractmethod
-    def get_games_on_date(self, date : datetime.datetime)->List[DivisionGamelike]:   
+    def get_games_on_date(self, date : datetime.datetime)->Sequence[Gamealog]:   
         pass
 
 class Divisionlike(
-    efficiencylike.EfficiencyTeamlike,
+    efficiencylike.Teamalog,
     Protocol
 ):
 
     efficiency : efficiencylike.Efficiencylike
-    controller : DivisionControllerlike
+    controller : Controlleralog
     
     @abc.abstractmethod
-    def get_games_on_date(self, date : datetime.datetime)->List[DivisionGamelike]:   
+    def get_games_on_date(self, date : datetime.datetime)->Sequence[Gamealog]:   
         # todo fix type linting here
         pass

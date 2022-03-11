@@ -2,9 +2,9 @@ import datetime
 from . import efficiencylike
 
 class Efficiency(efficiencylike.Efficiencylike):
-    division : efficiencylike.EfficiencyDivisionlike
+    division : efficiencylike.Divisionalog
 
-    def __init__(self, division: efficiencylike.EfficiencyDivisionlike):
+    def __init__(self, division: efficiencylike.Divisionalog):
         self.division = division
 
     def update_by_date(self, date: datetime.datetime) -> None:

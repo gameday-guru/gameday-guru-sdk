@@ -1,5 +1,6 @@
 from . import efficiencylike
 from typing import Tuple
+import datetime
 
 
 
@@ -74,10 +75,10 @@ class Efficiency(efficiencylike.Efficiencylike):
         self.league = league
         self.controller = controller
     
-    def get(self)->None:
+    def get(self, date : datetime.datetime)->None:
         """Gets self using the controller.
         """
-        self.controller.get(self)
+        self.controller.get(self, date)
 
     def get_oeff(self)->float:
         """Gets the team's offensive efficiency.
@@ -222,12 +223,12 @@ class Efficiency(efficiencylike.Efficiencylike):
         opponent.radjoeff = o_next_radjoeff
         opponent.radjdeff = o_next_radjdeff
 
-    def serialize(self)->None:
+    def serialize(self, date : datetime.datetime)->None:
         """Serializes just this effiency model.
         """
-        self.controller.serialize(self)
+        self.controller.serialize(self, date)
 
-    def biupdate_and_serialize(self, opponent : efficiencylike.Efficiencylike, pppf : float, pppa : float, recency : float = .2)->None:
+    def biupdate_and_serialize(self, opponent : efficiencylike.Efficiencylike, pppf : float, pppa : float, date : datetime.datetime, recency : float = .2)->None:
         """Performs a biupdate then serializes this efficiency and the opponent's.
 
         Args:
@@ -239,6 +240,6 @@ class Efficiency(efficiencylike.Efficiencylike):
         self.biupdate_kadjeff(opponent)
         self.biupdate_badjeff(opponent, pppf, pppa)
         self.biupdate_radjeff(opponent, pppf, pppa, recency)
-        self.serialize()
+        self.serialize(date)
 
     

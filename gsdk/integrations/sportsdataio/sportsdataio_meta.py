@@ -25,6 +25,9 @@ class SportsDataIOmeta(SportsDataIOMetalike):
             raise ValueError("JWTController did not find an environment variable matching the specified key.")
         SportsDataIOSingleton.key = key
         SportsDataIOSingleton.domain = domain
+        self.key = key
+        self.domain = domain
+
 
     def get_key(self)->str:
         return SportsDataIOSingleton.key

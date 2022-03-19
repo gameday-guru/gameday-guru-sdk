@@ -1,1 +1,5 @@
-from . import ncaab
+from .ncaab import Ncaab
+
+class SportsDataIO:
+
+    ncaab : Ncaab = Ncaab()

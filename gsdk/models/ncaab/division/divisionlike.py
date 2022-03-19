@@ -23,7 +23,6 @@ class Controlleralog(Protocol):
         pass
 
 class Divisionlike(
-    efficiencylike.Teamalog,
     Protocol
 ):
 

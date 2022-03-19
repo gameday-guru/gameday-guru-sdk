@@ -1,4 +1,5 @@
 import abc
+import datetime
 from typing import Tuple, Protocol
 
 class Teamalog(Protocol):
@@ -20,11 +21,11 @@ class Controlleralog(Protocol):
     """Abstract class defining the controller used for serializing the efficiency model.
     """
     @abc.abstractmethod
-    def get(self, efficiency : 'Efficiencylike')->None:
+    def get(self, efficiency : 'Efficiencylike', date : datetime.datetime)->None:
         pass
 
     @abc.abstractmethod
-    def serialize(self, efficiency : 'Efficiencylike')->None:
+    def serialize(self, efficiency : 'Efficiencylike', date : datetime.datetime)->None:
         pass
 
 class Efficiencylike(Protocol):
@@ -62,7 +63,7 @@ class Efficiencylike(Protocol):
         pass
 
     @abc.abstractmethod
-    def get(self)->None:
+    def get(self, date : datetime.datetime)->None:
         pass
 
     @abc.abstractmethod
@@ -100,9 +101,9 @@ class Efficiencylike(Protocol):
         pass
 
     @abc.abstractmethod
-    def serialize(self)->None:
+    def serialize(self, date : datetime.datetime)->None:
         pass
 
     @abc.abstractmethod
-    def biupdate_and_serialize(self, opponent : 'Efficiencylike', pppf : float, pppa : float, recency : float = .2)->None:
+    def biupdate_and_serialize(self, opponent : 'Efficiencylike', pppf : float, pppa : float, date : datetime.datetime, recency : float = .2)->None:
         pass

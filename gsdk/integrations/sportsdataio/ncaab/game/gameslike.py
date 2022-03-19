@@ -1,8 +1,8 @@
 from typing import Protocol
-from by_date_like import GamesByDatelike
+from . import by_date_like
 from ...sportsdataio_meta import SportsDataIOMetalike
 
 class Gameslike(Protocol):
 
-    by_date : GamesByDatelike
+    by_date : by_date_like.GamesByDatelike
     meta : SportsDataIOMetalike

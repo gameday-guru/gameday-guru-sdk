@@ -1,1 +1,1 @@
-from . import team
+from .v1 import Ncaab

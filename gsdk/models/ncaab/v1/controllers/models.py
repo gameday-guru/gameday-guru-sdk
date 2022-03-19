@@ -1,9 +1,9 @@
 from typing import Any, Dict, Sequence, Tuple, Set, Protocol
 from uuid import uuid4
 import redis
-from redis.commands.json.path import Path
 import datetime
 import copy
+import json
 
 
 class EfficiencyPayloadlike(Protocol):
@@ -24,14 +24,14 @@ class EfficiencyPayload(EfficiencyPayloadlike):
         Args:
             d (Dict[str, str]): _description_
         """
-        self.team_id = d["team_id"]
-        self.possessions = float(d["possessions"])
-        self.kadjoeff = float(d["kadjoeff"])
-        self.kadjdeff = float(d["kadjdeff"])
-        self.badjoeff = float(d["badjoeff"])
-        self.badjdeff = float(d["badjdeff"])
-        self.radjoeff = float(d["radjoeff"])
-        self.radjdeff = float(d["radjdeff"])
+        self.team_id = d.get("team_id", 0)
+        self.possessions = float(d.get("possessions", 0.0))
+        self.kadjoeff = float(d.get("kadjoeff", 0.0))
+        self.kadjdeff = float(d.get("kadjdeff", 0.0))
+        self.badjoeff = float(d.get("badjoeff", 0.0))
+        self.badjdeff = float(d.get("badjdeff", 0.0))
+        self.radjoeff = float(d.get("radjoeff", 0.0))
+        self.radjdeff = float(d.get("radjdeff", 0.0))
 
 class EfficiencyDriverUniversalControls:
 
@@ -39,30 +39,21 @@ class EfficiencyDriverUniversalControls:
     id : str
     namespace : str
     last_modified : datetime.datetime
-    client : redis.Redis[bytes]
+    client : redis.Redis
 
     @classmethod
-    def day_str(cls, date : datetime.date)->str:
+    def day_str(cls, date : datetime.datetime = datetime.datetime.today())->str:
         return date.strftime("%d/%m/%Y")
 
     @classmethod
-    def today_str(cls)->str:
-        """Computes the string representation of today.
-
-        Returns:
-            str: _description_
-        """
-        return datetime.date.today().strftime("%d/%m/%Y")
-
-    @classmethod
-    def week_date_str(cls)->str:
+    def week_date_str(cls, date : datetime.datetime = datetime.datetime.today())->str:
         """Computes the string for the week
 
         Returns:
             str: _description_
         """
-        return (datetime.date.today() 
-        +  datetime.timedelta(6 - datetime.date.today().weekday())).strftime("%d/%m/%Y")
+        return (date
+        +  datetime.timedelta(6 - date.weekday())).strftime("%d/%m/%Y")
 
     @classmethod
     def uuid(cls)->str:
@@ -71,7 +62,7 @@ class EfficiencyDriverUniversalControls:
         Returns:
             str: _description_
         """
-        return uuid4().bytes.decode("utf-8")
+        return uuid4().hex
 
     @classmethod
     def produce_key(cls, namespace : str, id : str,)->str: 
@@ -140,11 +131,13 @@ class EfficiencyDriverUniversalControls:
         self.namespace = namespace
         return self
 
-    def get(self)->Any:
-        return self.client.json().get(self.key, Path.rootPath())
+    def get(self)->Dict[str, Any]:
+        if self.client.get(self.key):
+            return json.loads(self.client.get(self.key))
+        return {}
 
     def set(self, val : Any)->Any:
-        return self.client.json().set(self.key, Path.rootPath(), val)
+        return self.client.set(self.key, json.dumps(val))
 
     def mlog(self):
         """Logs a modification event.
@@ -156,6 +149,11 @@ class EfficiencyDriverUniversalControls:
         return self
 
     def gen(self):
+        """Generates a deepcoy of self with a new id.
+
+        Returns:
+            _type_: _description_
+        """
         new = copy.deepcopy(self)
         new.id = self.uuid()
         return new
@@ -166,16 +164,24 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
     head : str
     date_index : Dict[str, str]
     week_index : Dict[str, str]
-    client : redis.Redis[bytes]
+    client : redis.Redis
 
     def __init__(
         self, 
         key : str,
-        client : redis.Redis[Any]
+        client : redis.Redis
     )->None:
         self.populate_from_key(key)
         self.client = client
+        val = self.get()
+        self.week_index = {}
         self.date_index = {}
+        if not val.get("head"):
+            self.new()
+        else: 
+            self.head = val.get("head")
+            self.date_index = val.get("date_index")
+            self.week_index = val.get("week_index")
 
     def new(self)->'EfficiencyRedisMeta':
         """Makes an entirely new version of the Meta.
@@ -185,7 +191,8 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
         """
         self.id = self.uuid()
         self.head = self.uuid() # this will be handled lazily by the head driver
-        self.mlog().date_index[self.today_str()] = self.head
+        self.week_index[self.week_date_str()] = self.head
+        self.mlog().date_index[self.day_str()] = self.head
         return self
 
     def serialize(self)->'EfficiencyRedisMeta':
@@ -217,7 +224,7 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
         self.week_index = val["week_index"]
         return self
 
-    def stage_head(self, head : str)->'EfficiencyRedisMeta':
+    def stage_head(self, head : str, date : datetime.datetime)->'EfficiencyRedisMeta':
         """Adds a head to the Meta. Does not serialize
 
         Args:
@@ -227,11 +234,11 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
             EfficiencyRedisMeta: _description_
         """
         self.head = head
-        self.week_index[self.week_date_str()] = self.head
-        self.mlog().date_index[self.today_str()] = self.head
+        self.week_index[self.week_date_str(date)] = self.head
+        self.mlog().date_index[self.day_str(date)] = self.head
         return self
 
-    def add_head(self, head : str)->'EfficiencyRedisMeta':
+    def add_head(self, head : str, date : datetime.datetime)->'EfficiencyRedisMeta':
         """Adds a head to the meta. Serializes.
 
         Args:
@@ -240,7 +247,7 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
         Returns:
             EfficiencyRedisMeta: _description_
         """
-        return self.stage_head(head).serialize()
+        return self.stage_head(head, date).serialize()
 
     def clone_to(self, namespace : str)->Tuple['EfficiencyRedisMeta', 'EfficiencyRedisMeta']:
         """Clones the meta and its heads and members to a new namespace.
@@ -273,7 +280,7 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
         """
         return self
 
-    def commit_efficiency(self, efficiency_payload : EfficiencyPayload)->'EfficiencyRedisMeta':
+    def commit_efficiency(self, efficiency_payload : EfficiencyPayload, date : datetime.datetime)->'EfficiencyRedisMeta':
         """Commits an efficiency payload.
 
         Args:
@@ -282,22 +289,26 @@ class EfficiencyRedisMeta(EfficiencyDriverUniversalControls):
         Returns:
             EfficiencyRedisMeta: _description_
         """
-        self.head = EfficiencyRedisHead(self.rel(self.head), self.client).push(efficiency_payload).id
-        return self
+        return self.add_head(EfficiencyRedisHead(self.rel(self.head), self.client).push(efficiency_payload).serialize().id, date)
+    
 
-    def get_team_efficiency(self, team_id : str, date : datetime.date)->EfficiencyPayload:
+    def get_team_efficiency(self, team_id : str, date : datetime.datetime)->EfficiencyPayload:
         """Gets the team efficiency.
 
         Args:
             team_id (str): _description_
-            date (datetime.date): _description_
+            date (datetime.datetime): _description_
 
         Returns:
             EfficiencyPayload: _description_
         """
-        head = EfficiencyRedisHead(self.rel(self.date_index[self.day_str(date)]), self.client)
-        member = EfficiencyRedisMember(head.rel(head.members[team_id]), self.client)
-        return member.to_payload()
+        head : EfficiencyRedisHead
+        if self.date_index.get(self.day_str(date)):
+            head = EfficiencyRedisHead(self.rel(self.date_index[self.day_str(date)]), self.client)
+        head = EfficiencyRedisHead(self.rel(self.head), self.client)
+        if head.members.get(team_id):
+            return EfficiencyRedisMember(head.rel(head.members[team_id]), self.client).to_payload()
+        return EfficiencyPayload({})
 
 
 
@@ -309,12 +320,21 @@ class EfficiencyRedisHead(EfficiencyDriverUniversalControls):
     next : Sequence[str]
     members : Dict[str, str]
 
-    def __init__(self, key : str, client : redis.Redis[bytes]) -> None:
+    def __init__(self, key : str, client : redis.Redis) -> None:
         self.populate_from_key(key)
         self.client = client
         self.prev = []
         self.next = []
         self.members = {}
+        val = self.get()
+        if not val.get("meta"):
+            self.new()
+        else: 
+            self.meta = val.get("meta") or ""
+            self.prev = val.get("prev") or []
+            self.next = val.get("next") or []
+            self.members = val.get("members") or {}
+            self.members = {}
 
     def new(
         self,
@@ -430,7 +450,7 @@ class EfficiencyRedisMember(EfficiencyDriverUniversalControls):
     radjdeff : float
     radjoeff : float
 
-    def __init__(self, key : str, client : redis.Redis[bytes])->None:
+    def __init__(self, key : str, client : redis.Redis)->None:
         """Initializes an efficiency member.
 
         Args:
@@ -439,11 +459,20 @@ class EfficiencyRedisMember(EfficiencyDriverUniversalControls):
         """
         self.populate_from_key(key)
         self.client = client
+        val = self.get()
+        efficiency_payload = EfficiencyPayload(val)
+        self.possessions = efficiency_payload.possessions
+        self.kadjoeff = efficiency_payload.kadjoeff
+        self.kadjdeff = efficiency_payload.kadjdeff
+        self.badjoeff = efficiency_payload.badjoeff
+        self.badjdeff = efficiency_payload.badjdeff
+        self.radjoeff = efficiency_payload.radjoeff
+        self.radjdeff = efficiency_payload.radjdeff
 
     @classmethod
     def create(cls, 
         namespace : str, 
-        client : redis.Redis[bytes],
+        client : redis.Redis,
         efficiency_payload : EfficiencyPayload,
         heads : Sequence[str]
     )->'EfficiencyRedisMember':

@@ -4,28 +4,27 @@ from datetime import datetime
 import dateutil.parser
 from ...sportsdataio_meta import SportsDataIOMetalike
 import requests
-from .by_date_like import Periodlike, GameByDatelike, GamesByDatelike
+from . import by_date_like
 
 
 T = TypeVar("T")
 
 
 def from_int(x: Any) -> int:
-    assert isinstance(x, int) and not isinstance(x, bool)
     return x
 
 
 def from_str(x: Any) -> str:
-    assert isinstance(x, str)
     return x
 
 
 def from_datetime(x: Any) -> datetime:
+    if not x:
+        return datetime.today()
     return dateutil.parser.parse(x)
 
 
 def from_none(x: Any) -> Any:
-    assert x is None
     return x
 
 
@@ -35,7 +34,6 @@ def from_float(x: Any) -> float:
 
 
 def from_bool(x: Any) -> bool:
-    assert isinstance(x, bool)
     return x
 
 
@@ -53,7 +51,7 @@ def to_class(c: Any, x: Any) -> dict[Any, Any]:
     assert isinstance(x, c)
     return cast(Any, x).to_dict()
 
-class Period(Periodlike):
+class Period(by_date_like.Periodlike):
 
     def __init__(self, period_id: int, game_id: int, number: int, name: int, type: str, away_score: int, home_score: int) -> None:
         self.period_id = period_id
@@ -88,9 +86,9 @@ class Period(Periodlike):
         return result
 
 
-class GameByDate(GameByDatelike):
+class GameByDate(by_date_like.GameByDatelike):
 
-    def __init__(self, game_id: int, season: int, season_type: int, status: str, day: datetime, date_time: datetime, away_team: str, home_team: str, away_team_id: int, home_team_id: int, away_team_score: int, home_team_score: int, updated: datetime, period: str, time_remaining_minutes: None, time_remaining_seconds: None, point_spread: float, over_under: float, away_team_money_line: int, home_team_money_line: int, global_game_id: int, global_away_team_id: int, global_home_team_id: int, tournament_id: None, bracket: None, round: None, away_team_seed: None, home_team_seed: None, away_team_previous_game_id: None, home_team_previous_game_id: None, away_team_previous_global_game_id: None, home_team_previous_global_game_id: None, tournament_display_order: None, tournament_display_order_for_home_team: str, is_closed: bool, game_end_date_time: datetime, home_rotation_number: None, away_rotation_number: None, top_team_previous_game_id: None, bottom_team_previous_game_id: None, channel: None, neutral_venue: None, away_point_spread_payout: None, home_point_spread_payout: None, over_payout: None, under_payout: None, date_time_utc: datetime, stadium: None, periods: List[Periodlike]) -> None:
+    def __init__(self, game_id: int, season: int, season_type: int, status: str, day: datetime, date_time: datetime, away_team: str, home_team: str, away_team_id: int, home_team_id: int, away_team_score: int, home_team_score: int, updated: datetime, period: str, time_remaining_minutes: None, time_remaining_seconds: None, point_spread: float, over_under: float, away_team_money_line: int, home_team_money_line: int, global_game_id: int, global_away_team_id: int, global_home_team_id: int, tournament_id: None, bracket: None, round: None, away_team_seed: None, home_team_seed: None, away_team_previous_game_id: None, home_team_previous_game_id: None, away_team_previous_global_game_id: None, home_team_previous_global_game_id: None, tournament_display_order: None, tournament_display_order_for_home_team: str, is_closed: bool, game_end_date_time: datetime, home_rotation_number: None, away_rotation_number: None, top_team_previous_game_id: None, bottom_team_previous_game_id: None, channel: None, neutral_venue: None, away_point_spread_payout: None, home_point_spread_payout: None, over_payout: None, under_payout: None, date_time_utc: datetime, stadium: None, periods: List[by_date_like.Periodlike]) -> None:
         self.game_id = game_id
         self.season = season
         self.season_type = season_type
@@ -193,7 +191,7 @@ class GameByDate(GameByDatelike):
         date_time_utc = from_datetime(obj["DateTimeUTC"])
         stadium = from_none(obj["Stadium"])
         periods = from_list(Period.from_dict, obj["Periods"])
-        return GameByDate(game_id, season, season_type, status, day, date_time, away_team, home_team, away_team_id, home_team_id, away_team_score, home_team_score, updated, period, time_remaining_minutes, time_remaining_seconds, point_spread, over_under, away_team_money_line, home_team_money_line, global_game_id, global_away_team_id, global_home_team_id, tournament_id, bracket, round, away_team_seed, home_team_seed, away_team_previous_game_id, home_team_previous_game_id, away_team_previous_global_game_id, home_team_previous_global_game_id, tournament_display_order, tournament_display_order_for_home_team, is_closed, game_end_date_time, home_rotation_number, away_rotation_number, top_team_previous_game_id, bottom_team_previous_game_id, channel, neutral_venue, away_point_spread_payout, home_point_spread_payout, over_payout, under_payout, date_time_utc, stadium, cast(List[Periodlike], periods))
+        return GameByDate(game_id, season, season_type, status, day, date_time, away_team, home_team, away_team_id, home_team_id, away_team_score, home_team_score, updated, period, time_remaining_minutes, time_remaining_seconds, point_spread, over_under, away_team_money_line, home_team_money_line, global_game_id, global_away_team_id, global_home_team_id, tournament_id, bracket, round, away_team_seed, home_team_seed, away_team_previous_game_id, home_team_previous_game_id, away_team_previous_global_game_id, home_team_previous_global_game_id, tournament_display_order, tournament_display_order_for_home_team, is_closed, game_end_date_time, home_rotation_number, away_rotation_number, top_team_previous_game_id, bottom_team_previous_game_id, channel, neutral_venue, away_point_spread_payout, home_point_spread_payout, over_payout, under_payout, date_time_utc, stadium, cast(List[by_date_like.Periodlike], periods))
 
     def to_dict(self) -> dict[str, Any]:
         result: dict[str, Any] = {}
@@ -250,12 +248,12 @@ class GameByDate(GameByDatelike):
 
 
 
-class GamesByDate(GamesByDatelike):
+class GamesByDate(by_date_like.GamesByDatelike):
 
     def __init__(self, meta : SportsDataIOMetalike):
         self.meta=meta
 
-    def get_games(self, date : datetime) -> List['GameByDatelike']:
+    def get_games(self, date : datetime) -> List[by_date_like.GameByDatelike]:
         json = requests.get(
             f"{self.meta.domain}/v3/cbb/scores/json/GamesByDate/{date.year}-{date.month}-{date.day}",
             params={

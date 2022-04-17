@@ -37,7 +37,7 @@ def to_float(x: Any) -> float:
     return x
 
 
-def to_class(c: Any, x: Any) -> dict[Any, Any]:
+def to_class(c: Any, x: Any) -> Dict[Any, Any]:
     assert isinstance(x, c)
     return cast(Any, x).to_dict()
 

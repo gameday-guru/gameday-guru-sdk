@@ -42,6 +42,7 @@ gsdk/models/ncaab/team/team.py
 gsdk/models/ncaab/team/teamlike.py
 gsdk/models/ncaab/v1/__init__.py
 gsdk/models/ncaab/v1/controllers/__init__.py
+gsdk/models/ncaab/v1/controllers/api.py
 gsdk/models/ncaab/v1/controllers/controller.py
 gsdk/models/ncaab/v1/controllers/models.py
 gsdk/utils/__init__.py

@@ -8,7 +8,7 @@ class Periodlike(Protocol):
     period_id: int
     game_id: int
     number: int
-    name: int
+    name: str
     type: str
     away_score: int
     home_score: int
@@ -87,7 +87,7 @@ class GameByDatelike:
         pass
 
     @abc.abstractmethod
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self) -> Dict[str, Any]:
         pass
 
 class GamesByDatelike(Protocol):

@@ -1,5 +1,5 @@
 
-from typing import Any, List, TypeVar, Callable, cast
+from typing import Any, List, TypeVar, Callable, cast, Dict
 from datetime import datetime
 import dateutil.parser
 from ...sportsdataio_meta import SportsDataIOMetalike
@@ -29,7 +29,6 @@ def from_none(x: Any) -> Any:
 
 
 def from_float(x: Any) -> float:
-    assert isinstance(x, (float, int)) and not isinstance(x, bool)
     return float(x)
 
 
@@ -47,13 +46,13 @@ def to_float(x: Any) -> float:
     return x
 
 
-def to_class(c: Any, x: Any) -> dict[Any, Any]:
+def to_class(c: Any, x: Any) -> Dict[Any, Any]:
     assert isinstance(x, c)
     return cast(Any, x).to_dict()
 
 class Period(by_date_like.Periodlike):
 
-    def __init__(self, period_id: int, game_id: int, number: int, name: int, type: str, away_score: int, home_score: int) -> None:
+    def __init__(self, period_id: int, game_id: int, number: int, name: str, type: str, away_score: int, home_score: int) -> None:
         self.period_id = period_id
         self.game_id = game_id
         self.number = number
@@ -68,14 +67,14 @@ class Period(by_date_like.Periodlike):
         period_id = from_int(obj["PeriodID"])
         game_id = from_int(obj["GameID"])
         number = from_int(obj["Number"])
-        name = int(from_str(obj["Name"]))
+        name : str = obj["Name"]
         type = from_str(obj["Type"])
         away_score = from_int(obj["AwayScore"])
         home_score = from_int(obj["HomeScore"])
         return Period(period_id, game_id, number, name, type, away_score, home_score)
 
-    def to_dict(self) -> dict[str, Any]:
-        result: dict[str, Any] = {}
+    def to_dict(self) -> Dict[str, Any]:
+        result: Dict[str, Any] = {}
         result["PeriodID"] = from_int(self.period_id)
         result["GameID"] = from_int(self.game_id)
         result["Number"] = from_int(self.number)
@@ -193,8 +192,8 @@ class GameByDate(by_date_like.GameByDatelike):
         periods = from_list(Period.from_dict, obj["Periods"])
         return GameByDate(game_id, season, season_type, status, day, date_time, away_team, home_team, away_team_id, home_team_id, away_team_score, home_team_score, updated, period, time_remaining_minutes, time_remaining_seconds, point_spread, over_under, away_team_money_line, home_team_money_line, global_game_id, global_away_team_id, global_home_team_id, tournament_id, bracket, round, away_team_seed, home_team_seed, away_team_previous_game_id, home_team_previous_game_id, away_team_previous_global_game_id, home_team_previous_global_game_id, tournament_display_order, tournament_display_order_for_home_team, is_closed, game_end_date_time, home_rotation_number, away_rotation_number, top_team_previous_game_id, bottom_team_previous_game_id, channel, neutral_venue, away_point_spread_payout, home_point_spread_payout, over_payout, under_payout, date_time_utc, stadium, cast(List[by_date_like.Periodlike], periods))
 
-    def to_dict(self) -> dict[str, Any]:
-        result: dict[str, Any] = {}
+    def to_dict(self) -> Dict[str, Any]:
+        result: Dict[str, Any] = {}
         result["GameID"] = from_int(self.game_id)
         result["Season"] = from_int(self.season)
         result["SeasonType"] = from_int(self.season_type)

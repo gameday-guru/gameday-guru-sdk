@@ -1,0 +1,319 @@
+<mxfile host="app.diagrams.net" modified="2022-04-17T08:07:56.181Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36" etag="QgBeRAbWczxjxRyceV7w" version="17.4.5" type="github">
+  <diagram id="uoGbLm1PCdAAAoof2IW7" name="Page-1">
+    <mxGraphModel dx="2742" dy="1292" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="JjxYE4h_kthhtw1J1okb-7" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="640" y="50" width="870" height="550" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-8" value="Standing product suggestions and misc ideas" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="650" y="60" width="390" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-5" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="50" width="780" height="550" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-1" value="Carson moving to frontend." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#6a00ff;strokeColor=#3700CC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-2" target="JjxYE4h_kthhtw1J1okb-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-2" value="Sam and Liam need to starting heating up ML." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="110" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-3" value="Liam working on a knowledge graph at job." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-87" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-4" target="JjxYE4h_kthhtw1J1okb-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#a20025;strokeColor=#6F0000;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-4" target="JjxYE4h_kthhtw1J1okb-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="130" />
+              <mxPoint x="1040" y="90" />
+              <mxPoint x="35" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-4" value="Want tools to easily build models and interfaces.&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-6" value="New developments" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-9" target="JjxYE4h_kthhtw1J1okb-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-9" value="Want SDK-first dev." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#6a00ff;strokeColor=#3700CC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-10" target="JjxYE4h_kthhtw1J1okb-41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1215" y="530" />
+              <mxPoint x="955" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-10" value="Want to generate model recommendations." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1155" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-11" value="Data team can deploy new models quickly and independently." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-12" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="650" width="1720" height="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-13" value="DevOps Stage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="-190" y="660" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#a20025;strokeColor=#6F0000;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-14" target="JjxYE4h_kthhtw1J1okb-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="310" />
+              <mxPoint x="35" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-14" value="Gabe coming on board." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-15" target="JjxYE4h_kthhtw1J1okb-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="700" />
+              <mxPoint x="265" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-15" value="DM Summer!" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-17" target="JjxYE4h_kthhtw1J1okb-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-17" value="Gameday Guru Design System" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="790" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-18" target="JjxYE4h_kthhtw1J1okb-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-18" value="Gameday Guru (Internal) Design SDK" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="970" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-19" target="JjxYE4h_kthhtw1J1okb-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-19" value="Gameday Guru Internal SDK v2" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="790" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-20" target="JjxYE4h_kthhtw1J1okb-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-20" value="Gameday Guru Internal Design SDK" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="300" y="970" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-21" target="JjxYE4h_kthhtw1J1okb-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-21" value="Gameday Guru (Internal) Model Builder" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1150" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-39" target="JjxYE4h_kthhtw1J1okb-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-22" target="JjxYE4h_kthhtw1J1okb-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-22" value="Gameday Guru (Internal) Model Builder API" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1320" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#a20025;strokeColor=#6F0000;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-1" target="JjxYE4h_kthhtw1J1okb-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-34" value="Liam working on a knowledge graph at job." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-420" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-35" target="JjxYE4h_kthhtw1J1okb-19">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="560" />
+              <mxPoint x="495" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-35" value="Time to go next level with the SDK." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-85" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-36" target="JjxYE4h_kthhtw1J1okb-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="700" />
+              <mxPoint x="265" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-36" value="Sam defining process docs." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-37" value="Gameday Guru Model Ops" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="540" y="1490" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-39" value="Gameday Guru (Internal) Model Repos" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1490" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-41" target="JjxYE4h_kthhtw1J1okb-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-41" target="JjxYE4h_kthhtw1J1okb-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-41" target="JjxYE4h_kthhtw1J1okb-48">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-41" value="Gameday Guru Knowledge Graph" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="760" y="790" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-42" target="JjxYE4h_kthhtw1J1okb-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-42" target="JjxYE4h_kthhtw1J1okb-48">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="955" y="1160" />
+              <mxPoint x="1205" y="1160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-42" value="Gameday Guru Recommender System" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="760" y="970" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-43" target="JjxYE4h_kthhtw1J1okb-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-43" value="Meta Models (Internal)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="540" y="1230" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-48" value="Gameday Guru Platform Analytics" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="1490" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-51" value="" style="rounded=0;whiteSpace=wrap;html=1;align=left;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="1760" width="1720" height="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-52" value="Features Stage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="-190" y="1770" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-53" target="JjxYE4h_kthhtw1J1okb-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-53" value="Gameday Guru Design Space (low/no-code)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="-160" y="2220" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-54" target="JjxYE4h_kthhtw1J1okb-58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-54">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="2090" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-54" value="Gameday Guru Model Repos" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="70" y="2030" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-55" target="JjxYE4h_kthhtw1J1okb-54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-55" target="JjxYE4h_kthhtw1J1okb-66">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="1890" />
+              <mxPoint x="620" y="2090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-55" value="Gameday Guru Model Builder API" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="70" y="1830" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" target="JjxYE4h_kthhtw1J1okb-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="35" y="920" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-58" target="JjxYE4h_kthhtw1J1okb-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-58" value="Gameday Guru Model Builder Space (low/no-code)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="360" y="2220" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-59" target="JjxYE4h_kthhtw1J1okb-71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-59" value="Gameday Guru Feeds" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1830" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-42" target="JjxYE4h_kthhtw1J1okb-59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-63" target="JjxYE4h_kthhtw1J1okb-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-63" value="Gameday Guru Model Canvas" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="70" y="2410" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-66" target="JjxYE4h_kthhtw1J1okb-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-66" value="Gameday Guru Model Index" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="2030" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-69">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="830" y="2990" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1285" y="2990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-69" value="Gameday Guru Model Bot" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="2610" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-71" target="JjxYE4h_kthhtw1J1okb-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-71" value="Tinderfied Gameday Guru" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="580" y="2410" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-73" value="Gameday Guru Competitions" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="440" y="2930" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-77" target="JjxYE4h_kthhtw1J1okb-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=18;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-77" target="JjxYE4h_kthhtw1J1okb-73">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1030" y="2280" />
+              <mxPoint x="1030" y="2990" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-77" value="Gameday Guru Model Analytics" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="2220" width="390" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#6a00ff;strokeColor=#3700CC;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-3" target="JjxYE4h_kthhtw1J1okb-41">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="530" />
+              <mxPoint x="955" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JjxYE4h_kthhtw1J1okb-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=18;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1" source="JjxYE4h_kthhtw1J1okb-11" target="JjxYE4h_kthhtw1J1okb-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
